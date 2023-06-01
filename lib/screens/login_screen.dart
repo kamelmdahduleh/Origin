@@ -5,6 +5,39 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const MyLogin();
+  }
+}
+
+class MyLogin extends StatefulWidget {
+  const MyLogin({Key? key}) : super(key: key);
+
+  @override
+  State<MyLogin> createState() => _MyLoginState();
+}
+
+class _MyLoginState extends State<MyLogin> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          leading: const Icon(
+            Icons.menu,
+            color: Colors.black,
+          ),
+          elevation: 0,
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          title: const Text(
+            'Log In',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+        body: Column(
+          children: [],
+        ),
+      ),
+    );
   }
 }
