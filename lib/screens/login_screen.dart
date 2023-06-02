@@ -6,7 +6,10 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyLogin();
+    return MaterialApp(
+      theme: ThemeData(fontFamily: 'Roboto'),
+      home: const MyLogin(),
+    );
   }
 }
 
@@ -20,14 +23,15 @@ class MyLogin extends StatefulWidget {
 class _MyLoginState extends State<MyLogin> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           leading: const Icon(
             Icons.menu,
             color: Colors.black,
           ),
-          elevation: 0,
+          elevation: .5,
           backgroundColor: Colors.white,
           centerTitle: true,
           title: const Text(
@@ -36,50 +40,112 @@ class _MyLoginState extends State<MyLogin> {
           ),
         ),
         body: Container(
-          color: Colors.white,
           margin: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              Expanded(
+                flex: 3,
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Image(
+                      image: AssetImage(
+                    'images/logo.png',
+                  )),
+                ),
+              ),
+              const SizedBox(
                 height: 30,
               ),
-              Text(
+              const Text(
                 'Username',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               TextField(
+                style: const TextStyle(fontSize: 18),
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: Color(kMyGrey),
+                  fillColor: const Color(kMyGrey),
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              Text('Password'),
+              const Text('Password'),
+              const SizedBox(
+                height: 15,
+              ),
               TextField(
+                style: const TextStyle(fontSize: 18),
+                obscureText: true,
+                obscuringCharacter: '*',
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: Color(kMyGrey),
+                  fillColor: const Color(kMyGrey),
                   border: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Color(kMyGrey)),
-                      borderRadius: BorderRadius.circular(20)),
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none),
                 ),
               ),
-              SizedBox(
-                height: 15,
+              const SizedBox(
+                height: 25,
               ),
               MaterialButton(
-                child: Text(
+                height: 45,
+                minWidth: MediaQuery.of(context).size.width,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                color: const Color(kMyPurple),
+                child: const Text(
                   'Log In',
-                  style: TextStyle(color: Color(0xFF443A82)),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 onPressed: () {},
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              MaterialButton(
+                height: 45,
+                minWidth: MediaQuery.of(context).size.width,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: const Text(
+                  'Sign Up',
+                  style: TextStyle(
+                    color: Color(kMyPurple),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                onPressed: () {},
+              ),
+              const Expanded(
+                child: SizedBox(
+                  height: 10,
+                ),
+              ),
+              const Divider(
+                color: Colors.black26,
+              ),
+              const Text(
+                'Copyright ©️ 2022 1293602 B.C. LTD. - All Rights Reserved',
+                style: TextStyle(color: Colors.black26, fontSize: 16),
+              ),
+              const SizedBox(
+                height: 20,
               )
             ],
           ),
