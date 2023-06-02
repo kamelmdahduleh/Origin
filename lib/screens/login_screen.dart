@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smpa_e_health/constants.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -34,8 +35,54 @@ class _MyLoginState extends State<MyLogin> {
             style: TextStyle(color: Colors.black),
           ),
         ),
-        body: Column(
-          children: [],
+        body: Container(
+          color: Colors.white,
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                'Username',
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Color(kMyGrey),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Text('Password'),
+              TextField(
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Color(kMyGrey),
+                  border: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Color(kMyGrey)),
+                      borderRadius: BorderRadius.circular(20)),
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              MaterialButton(
+                child: Text(
+                  'Log In',
+                  style: TextStyle(color: Color(0xFF443A82)),
+                ),
+                onPressed: () {},
+              )
+            ],
+          ),
         ),
       ),
     );
