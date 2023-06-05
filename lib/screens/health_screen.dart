@@ -1,10 +1,10 @@
 // ignore_for_file: camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 
-import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 // Package
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
+import 'package:flutter/material.dart';
 
 //
 
@@ -33,15 +33,15 @@ const List<TabItem> items = [
   ),
 ];
 
-class HomeScreen extends StatefulWidget {
+class HealthScreen extends StatefulWidget {
   final String id = 'home_screen';
-  const HomeScreen({super.key});
+  const HealthScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => HomeScreenState();
+  State<HealthScreen> createState() => HealthScreenState();
 }
 
-class HomeScreenState extends State<HomeScreen> {
+class HealthScreenState extends State<HealthScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
