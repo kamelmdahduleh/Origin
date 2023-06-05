@@ -5,6 +5,7 @@ import 'dart:math' as math;
 
 // Package
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
+import 'package:smpa_e_health/constants.dart';
 
 //
 
@@ -44,38 +45,115 @@ class HomeScreen extends StatefulWidget {
 class HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        //Bottom Navigation Bar still in development
-        bottomNavigationBar: Container(
-          padding: const EdgeInsets.only(bottom: 30, right: 32, left: 32),
-          child: BottomBarDefault(
-            items: items,
-            backgroundColor: Colors.white,
-            color: Colors.grey,
-            colorSelected: Colors.deepPurple,
-            indexSelected: visit,
-            paddingVertical: 5,
-            onTap: (int index) => setState(() {
-              visit = index;
-            }),
-          ),
-        ),
-
-        //Work Above ...
-        drawer: Drawer(),
-        appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.deepPurple[600]),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      //Bottom Navigation Bar still in development
+      bottomNavigationBar: Container(
+        child: BottomBarDefault(
+          animated: true,
+          items: items,
           backgroundColor: Colors.white,
-          title: Center(
-            child: Text(
-              'Home',
-              style: TextStyle(color: Colors.black),
-            ),
+          color: Colors.grey,
+          colorSelected: Colors.deepPurple,
+          indexSelected: visit,
+          paddingVertical: 5,
+          onTap: (int index) => setState(
+            () {
+              visit = index;
+            },
           ),
         ),
-        body: SingleChildScrollView(),
       ),
+      drawer: Drawer(
+        elevation: 0,
+        child: FractionallySizedBox(
+          widthFactor: 1,
+          child: Container(
+            color: Color(
+              kMyGrey,
+            ),
+            child: SideMenu(),
+          ),
+        ),
+      ),
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Color(kMyPurple)),
+        backgroundColor: Colors.white,
+        title: Text(
+          'Home',
+          // items[visit][2].toString(),
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+      body: SingleChildScrollView(),
+    );
+  }
+}
+
+class SideMenu extends StatelessWidget {
+  const SideMenu({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          height: 30,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: Column(
+            children: [Text('Data ... '), Text('Data ... ')],
+          ),
+        ),
+        Divider(
+          color: Colors.grey,
+          height: 50,
+          thickness: 2,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.settings_rounded),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    'Settings',
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Icon(Icons.ios_share_rounded),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    'Settings',
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Icon(Icons.exit_to_app_rounded),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    'Settings',
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

@@ -5,6 +5,7 @@ import 'dart:math' as math;
 
 // Package
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
+import 'package:smpa_e_health/constants.dart';
 
 //
 
@@ -33,43 +34,49 @@ const List<TabItem> items = [
   ),
 ];
 
-class HomeScreen extends StatefulWidget {
+class HealthScreen extends StatefulWidget {
   final String id = 'home_screen';
-  const HomeScreen({super.key});
+  const HealthScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => HomeScreenState();
+  State<HealthScreen> createState() => HealthScreenState();
 }
 
-class HomeScreenState extends State<HomeScreen> {
+class HealthScreenState extends State<HealthScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         //Bottom Navigation Bar still in development
         bottomNavigationBar: Container(
-          padding: const EdgeInsets.only(bottom: 30, right: 32, left: 32),
           child: BottomBarDefault(
+            animated: true,
             items: items,
             backgroundColor: Colors.white,
             color: Colors.grey,
             colorSelected: Colors.deepPurple,
             indexSelected: visit,
             paddingVertical: 5,
-            onTap: (int index) => setState(() {
-              visit = index;
-            }),
+            onTap: (int index) => setState(
+              () {
+                visit = index;
+              },
+            ),
           ),
         ),
 
         //Work Above ...
         drawer: Drawer(),
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.deepPurple[600]),
+          // systemOverlayStyle: SystemUiOverlayStyle(
+          //   statusBarColor: Colors.blue,
+          //   statusBarBrightness: Brightness.light,
+          // ),
+          iconTheme: IconThemeData(color: Color(kMyPurple)),
           backgroundColor: Colors.white,
           title: Center(
             child: Text(
-              'Home',
+              'Health',
               style: TextStyle(color: Colors.black),
             ),
           ),
@@ -212,7 +219,7 @@ class HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(
                         10,
                       ),
-                      color: Color.fromARGB(255, 68, 58, 130),
+                      color: Color(0xFF443A82),
                     ),
                     height: 50,
                     width: double.infinity,
