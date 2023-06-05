@@ -1,10 +1,8 @@
 // ignore_for_file: camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 
-import 'package:flutter/material.dart';
-import 'dart:math' as math;
-
 // Package
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
+import 'package:flutter/material.dart';
 import 'package:smpa_e_health/constants.dart';
 
 //
