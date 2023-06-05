@@ -47,6 +47,7 @@ class HealthScreenState extends State<HealthScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         //Bottom Navigation Bar still in development
         bottomNavigationBar: Container(
           child: BottomBarDefault(
@@ -68,10 +69,7 @@ class HealthScreenState extends State<HealthScreen> {
         //Work Above ...
         drawer: Drawer(),
         appBar: AppBar(
-          // systemOverlayStyle: SystemUiOverlayStyle(
-          //   statusBarColor: Colors.blue,
-          //   statusBarBrightness: Brightness.light,
-          // ),
+          elevation: 0,
           iconTheme: IconThemeData(color: Color(kMyPurple)),
           backgroundColor: Colors.white,
           title: Center(

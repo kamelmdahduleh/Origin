@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:smpa_e_health/constants.dart';
+import 'package:smpa_e_health/screens/health_screen.dart';
+import 'package:smpa_e_health/screens/home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -111,7 +113,12 @@ class _MyLoginState extends State<MyLogin> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              },
             ),
             const SizedBox(
               height: 25,
@@ -130,7 +137,12 @@ class _MyLoginState extends State<MyLogin> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HealthScreen()),
+                );
+              },
             ),
             const Expanded(
               child: SizedBox(

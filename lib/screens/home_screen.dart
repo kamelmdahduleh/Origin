@@ -75,6 +75,7 @@ class HomeScreenState extends State<HomeScreen> {
         ),
       ),
       appBar: AppBar(
+        elevation: 0,
         iconTheme: IconThemeData(color: Color(kMyPurple)),
         backgroundColor: Colors.white,
         title: Text(
