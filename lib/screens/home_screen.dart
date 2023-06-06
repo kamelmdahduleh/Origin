@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:smpa_e_health/constants.dart';
 
+List<String> days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 List<Icon> progressIcons = [
   Icon(
     Icons.spa_outlined,
@@ -203,13 +204,114 @@ class HRUPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Icon(
-                      Icons.sentiment_very_satisfied_outlined,
+                      Icons.tag_faces_rounded,
                       size: 80,
-                      color: Colors.black,
+                      color: Colors.lightGreen,
                     ),
-                    Text('Good'),
+                    Text(
+                      'Great',
+                      style: TextStyle(color: Colors.lightGreen),
+                    ),
                   ],
                 ),
+              ),
+            ),
+            Divider(
+              height: 50,
+              thickness: 20,
+              color: Color(kMyDividerColor),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+              alignment: Alignment.centerLeft,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Mood Analysis',
+                    style: Theme.of(context).textTheme.headlineLarge,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'This Week',
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(40),
+                                color: Color(kMyDividerColor)),
+                            child: Icon(
+                              Icons.arrow_back_ios_new_rounded,
+                              size: 20,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Container(
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(40),
+                                color: Color(kMyDividerColor)),
+                            child: Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              color: Colors.black26,
+                              size: 20,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  ListView.builder(
+                    itemCount: 6,
+                    shrinkWrap: true,
+                    physics: ScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Divider(
+                        height: 40,
+                        thickness: 3,
+                        color: Color(kMyDividerColor),
+                      );
+                    },
+                  ),
+                  Container(
+                    height: 20,
+                    // color: Colors.red,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text('MON'),
+                        Text('TUE'),
+                        Text('WED'),
+                        Text('THU'),
+                        Text('FRI'),
+                        Text('SAT'),
+                        Text('SUN'),
+                        // ListView.builder(
+                        //   shrinkWrap: true,
+                        //   physics: ScrollPhysics(),
+                        //   itemCount: days.length,
+                        //   scrollDirection: Axis.horizontal,
+                        //   itemBuilder: (context, index) {
+                        //     return Text(days[index]);
+                        //   },
+                        // ),
+                      ],
+                    ),
+                  )
+                ],
               ),
             )
           ],

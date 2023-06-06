@@ -93,6 +93,8 @@ class BodyScreenState extends State<BodyScreen> {
         ),
       ),
       appBar: AppBar(
+        actions: visit == 4 ? [Icon(Icons.edit)] : null,
+        scrolledUnderElevation: 0,
         centerTitle: true,
         elevation: 0,
         iconTheme: IconThemeData(color: Color(kMyPurple)),
