@@ -8,6 +8,7 @@ import 'package:smpa_e_health/constants.dart';
 
 import 'health_screen.dart';
 import 'home_screen.dart';
+import 'profile_screen.dart';
 
 //
 int visit = 0;
@@ -228,17 +229,6 @@ class FoodDiaryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Text('Testinggg Food Diary...'),
-    );
-  }
-}
-
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text('Testinggg Profile...'),
     );
   }
 }
