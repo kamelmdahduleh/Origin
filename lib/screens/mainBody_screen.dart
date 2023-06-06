@@ -80,7 +80,7 @@ class BodyScreenState extends State<BodyScreen> {
         ),
       ),
       drawer: Drawer(
-        elevation: 0,
+        // elevation: 0,
         child: FractionallySizedBox(
           widthFactor: 1,
           child: Container(
@@ -92,14 +92,14 @@ class BodyScreenState extends State<BodyScreen> {
         ),
       ),
       appBar: AppBar(
+        scrolledUnderElevation: 0,
+        centerTitle: true,
         elevation: 0,
         iconTheme: IconThemeData(color: Color(kMyPurple)),
         backgroundColor: Colors.white,
-        title: Center(
-          child: Text(
-            AppBarTitles.elementAt(visit),
-            style: TextStyle(color: Colors.black),
-          ),
+        title: Text(
+          AppBarTitles.elementAt(visit),
+          style: TextStyle(color: Colors.black),
         ),
       ),
       body: Container(
