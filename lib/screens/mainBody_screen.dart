@@ -92,14 +92,13 @@ class BodyScreenState extends State<BodyScreen> {
         ),
       ),
       appBar: AppBar(
+        centerTitle: true,
         elevation: 0,
         iconTheme: IconThemeData(color: Color(kMyPurple)),
         backgroundColor: Colors.white,
-        title: Center(
-          child: Text(
-            AppBarTitles.elementAt(visit),
-            style: TextStyle(color: Colors.black),
-          ),
+        title: Text(
+          AppBarTitles.elementAt(visit),
+          style: TextStyle(color: Colors.black),
         ),
       ),
       body: Container(

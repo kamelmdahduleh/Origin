@@ -83,22 +83,30 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                ListTile(
-                  contentPadding: EdgeInsets.symmetric(vertical: 5),
-                  leading: Icon(
-                    Icons.sentiment_very_satisfied_rounded,
-                    size: 50,
-                    color: Color(kMyPurple),
-                  ),
-                  title: Text(
-                    'How are you feeling today?',
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  ),
-                  subtitle: Text('DAILY CHECK IN'),
-                  trailing: Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    size: 18,
-                    color: Colors.grey[400],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HRUPage()),
+                    );
+                  },
+                  child: ListTile(
+                    contentPadding: EdgeInsets.symmetric(vertical: 5),
+                    leading: Icon(
+                      Icons.sentiment_very_satisfied_rounded,
+                      size: 50,
+                      color: Color(kMyPurple),
+                    ),
+                    title: Text(
+                      'How are you feeling today?',
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                    subtitle: Text('DAILY CHECK IN'),
+                    trailing: Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      size: 18,
+                      color: Colors.grey[400],
+                    ),
                   ),
                 ),
                 Divider(
@@ -170,6 +178,43 @@ class HRUPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('How are you feeling today?'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              'How are you today?',
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+            AspectRatio(
+              aspectRatio: 3,
+              child: ListView.builder(
+                shrinkWrap: true,
+                physics: ScrollPhysics(),
+                itemCount: 5,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.sentiment_very_satisfied_outlined,
+                      size: 80,
+                      color: Colors.black,
+                    ),
+                    Text('Good'),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
