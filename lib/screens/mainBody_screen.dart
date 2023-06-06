@@ -11,6 +11,7 @@ import 'home_screen.dart';
 import 'profile_screen.dart';
 
 //
+
 int visit = 0;
 const List<String> AppBarTitles = [
   "Home",
