@@ -137,12 +137,7 @@ class _MyLoginState extends State<MyLogin> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HealthScreen()),
-                );
-              },
+              onPressed: () {},
             ),
             const Expanded(
               child: SizedBox(

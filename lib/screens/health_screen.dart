@@ -4,12 +4,11 @@ import 'dart:math' as math;
 
 // Package
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
+
+// Pages
 import 'package:flutter/material.dart';
 import 'package:smpa_e_health/constants.dart';
 
-//
-
-// Pages
 int visit = 0;
 const List<TabItem> items = [
   TabItem(
@@ -36,6 +35,7 @@ const List<TabItem> items = [
 
 class HealthScreen extends StatefulWidget {
   final String id = 'home_screen';
+
   const HealthScreen({super.key});
 
   @override
@@ -49,36 +49,36 @@ class HealthScreenState extends State<HealthScreen> {
       child: Scaffold(
         backgroundColor: Colors.white,
         //Bottom Navigation Bar still in development
-        bottomNavigationBar: Container(
-          child: BottomBarDefault(
-            animated: true,
-            items: items,
-            backgroundColor: Colors.white,
-            color: Colors.grey,
-            colorSelected: Colors.deepPurple,
-            indexSelected: visit,
-            paddingVertical: 5,
-            onTap: (int index) => setState(
-              () {
-                visit = index;
-              },
-            ),
-          ),
-        ),
+        // bottomNavigationBar: Container(
+        //   child: BottomBarDefault(
+        //     animated: true,
+        //     items: items,
+        //     backgroundColor: Colors.white,
+        //     color: Colors.grey,
+        //     colorSelected: Colors.deepPurple,
+        //     indexSelected: visit,
+        //     paddingVertical: 5,
+        //     onTap: (int index) => setState(
+        //       () {
+        //         visit = index;
+        //       },
+        //     ),
+        //   ),
+        // ),
 
         //Work Above ...
-        drawer: Drawer(),
-        appBar: AppBar(
-          elevation: 0,
-          iconTheme: IconThemeData(color: Color(kMyPurple)),
-          backgroundColor: Colors.white,
-          title: Center(
-            child: Text(
-              'Health',
-              style: TextStyle(color: Colors.black),
-            ),
-          ),
-        ),
+        // drawer: Drawer(),
+        // appBar: AppBar(
+        //   elevation: 0,
+        //   iconTheme: IconThemeData(color: Color(kMyPurple)),
+        //   backgroundColor: Colors.white,
+        //   title: Center(
+        //     child: Text(
+        //       'Health',
+        //       style: TextStyle(color: Colors.black),
+        //     ),
+        //   ),
+        // ),
         body: SingleChildScrollView(
           child: Column(
             children: [

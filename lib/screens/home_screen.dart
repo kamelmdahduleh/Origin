@@ -2,13 +2,28 @@
 
 // Package
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
-import 'package:flutter/material.dart';
-import 'package:smpa_e_health/constants.dart';
-
-//
 
 // Pages
+import 'package:flutter/material.dart';
+import 'package:smpa_e_health/constants.dart';
+import 'health_screen.dart';
+
+//
 int visit = 0;
+const List<String> AppBarTitles = [
+  "Home",
+  "Mind",
+  "Health",
+  "Food Diary",
+  "Profile"
+];
+List<Widget> pages = [
+  HomeScreenDetails(),
+  MindScreen(),
+  HealthScreen(),
+  FoodDiaryScreen(),
+  ProfileScreen(),
+];
 const List<TabItem> items = [
   TabItem(
     icon: Icons.home_rounded,
@@ -34,6 +49,7 @@ const List<TabItem> items = [
 
 class HomeScreen extends StatefulWidget {
   final String id = 'home_screen';
+
   const HomeScreen({super.key});
 
   @override
@@ -79,12 +95,13 @@ class HomeScreenState extends State<HomeScreen> {
         iconTheme: IconThemeData(color: Color(kMyPurple)),
         backgroundColor: Colors.white,
         title: Text(
-          'Home',
-          // items[visit][2].toString(),
+          AppBarTitles.elementAt(visit),
           style: TextStyle(color: Colors.black),
         ),
       ),
-      body: SingleChildScrollView(),
+      body: Container(
+        child: pages.elementAt(visit),
+      ),
     );
   }
 }
@@ -153,6 +170,50 @@ class SideMenu extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class HomeScreenDetails extends StatelessWidget {
+  const HomeScreenDetails({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text('Testinggg Health...'),
+    );
+  }
+}
+
+class MindScreen extends StatelessWidget {
+  const MindScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text('Testinggg Minddd...'),
+    );
+  }
+}
+
+class FoodDiaryScreen extends StatelessWidget {
+  const FoodDiaryScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text('Testinggg Food Diary...'),
+    );
+  }
+}
+
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text('Testinggg Profile...'),
     );
   }
 }
