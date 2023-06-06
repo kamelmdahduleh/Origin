@@ -4,7 +4,6 @@ import 'dart:math' as math;
 
 // Package
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
-
 // Pages
 import 'package:flutter/material.dart';
 import 'package:smpa_e_health/constants.dart';
@@ -34,7 +33,7 @@ const List<TabItem> items = [
 ];
 
 class HealthScreen extends StatefulWidget {
-  final String id = 'home_screen';
+  final String id = 'health_screen';
 
   const HealthScreen({super.key});
 
