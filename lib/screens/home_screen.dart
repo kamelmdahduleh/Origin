@@ -164,3 +164,12 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+class HRUPage extends StatelessWidget {
+  const HRUPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
