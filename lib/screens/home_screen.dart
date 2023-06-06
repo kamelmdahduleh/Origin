@@ -15,7 +15,7 @@ List<Icon> progressIcons = [
     color: Color(kMyPurple),
   ),
   Icon(
-    Icons.sentiment_very_satisfied_rounded,
+    Icons.emoji_food_beverage_rounded,
     size: 50,
     color: Color(kMyPurple),
   )
@@ -37,6 +37,7 @@ class HomeScreen extends StatelessWidget {
           AspectRatio(
             aspectRatio: 2,
             child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 15),
               alignment: Alignment.center,
               child: Image(
                 image: AssetImage(
@@ -47,9 +48,7 @@ class HomeScreen extends StatelessWidget {
           ),
           SizedBox(height: 10),
           Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 10.0,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
