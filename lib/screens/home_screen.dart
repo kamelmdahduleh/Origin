@@ -37,6 +37,7 @@ class HomeScreen extends StatelessWidget {
           AspectRatio(
             aspectRatio: 2,
             child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 15),
               alignment: Alignment.center,
               child: Image(
                 image: AssetImage(
