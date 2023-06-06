@@ -2,10 +2,10 @@
 
 // Package
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
+
 // Pages
 import 'package:flutter/material.dart';
 import 'package:smpa_e_health/constants.dart';
-
 import 'health_screen.dart';
 import 'home_screen.dart';
 
@@ -79,15 +79,15 @@ class BodyScreenState extends State<BodyScreen> {
           ),
         ),
       ),
-      drawer: SafeArea(
-        child: Drawer(
-          elevation: 0,
-          child: FractionallySizedBox(
-            widthFactor: 1,
-            child: Container(
-              color: Colors.white,
-              child: SideMenu(),
+      drawer: Drawer(
+        elevation: 0,
+        child: FractionallySizedBox(
+          widthFactor: 1,
+          child: Container(
+            color: Color(
+              kMyGrey,
             ),
+            child: SideMenu(),
           ),
         ),
       ),
@@ -122,34 +122,9 @@ class SideMenu extends StatelessWidget {
           height: 30,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 20.0),
+          padding: const EdgeInsets.only(left: 10.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                alignment: Alignment.centerLeft,
-                child: CircleAvatar(
-                  radius: 25,
-                  backgroundImage: AssetImage('images/man_smiling.jpg'),
-                  backgroundColor: Colors.white,
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                'Test User',
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-              ),
-              Text(
-                'test.user@gmail.com',
-                style: TextStyle(
-                  color: Colors.grey.shade500,
-                ),
-              )
-            ],
+            children: [Text('Data ... '), Text('Data ... ')],
           ),
         ),
         Divider(
@@ -158,7 +133,7 @@ class SideMenu extends StatelessWidget {
           thickness: 2,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 20.0),
+          padding: const EdgeInsets.only(left: 10.0),
           child: Column(
             children: [
               Row(
@@ -167,29 +142,21 @@ class SideMenu extends StatelessWidget {
                   SizedBox(
                     width: 20,
                   ),
-                  Text('Settings',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 17)),
+                  Text(
+                    'Settings',
+                  ),
                 ],
-              ),
-              SizedBox(
-                height: 15,
               ),
               Row(
                 children: [
-                  Icon(
-                    Icons.ios_share_rounded,
-                  ),
+                  Icon(Icons.ios_share_rounded),
                   SizedBox(
                     width: 20,
                   ),
-                  Text('About',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 17)),
+                  Text(
+                    'Settings',
+                  ),
                 ],
-              ),
-              SizedBox(
-                height: 15,
               ),
               Row(
                 children: [
@@ -198,8 +165,7 @@ class SideMenu extends StatelessWidget {
                     width: 20,
                   ),
                   Text(
-                    'Sign Out',
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
+                    'Settings',
                   ),
                 ],
               ),
