@@ -1,219 +1,167 @@
-// ignore_for_file: camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-// Package
-import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
-
-// Pages
 import 'package:flutter/material.dart';
 import 'package:smpa_e_health/constants.dart';
-import 'health_screen.dart';
 
-//
-int visit = 0;
-const List<String> AppBarTitles = [
-  "Home",
-  "Mind",
-  "Health",
-  "Food Diary",
-  "Profile"
+List<Icon> progressIcons = [
+  Icon(
+    Icons.spa_outlined,
+    size: 50,
+    color: Color(kMyPurple),
+  ),
+  Icon(
+    Icons.sports_gymnastics_rounded,
+    size: 50,
+    color: Color(kMyPurple),
+  ),
+  Icon(
+    Icons.sentiment_very_satisfied_rounded,
+    size: 50,
+    color: Color(kMyPurple),
+  )
 ];
-List<Widget> pages = [
-  HomeScreenDetails(),
-  MindScreen(),
-  HealthScreen(),
-  FoodDiaryScreen(),
-  ProfileScreen(),
-];
-const List<TabItem> items = [
-  TabItem(
-    icon: Icons.home_rounded,
-    title: 'Home',
-  ),
-  TabItem(
-    icon: Icons.tag_faces_outlined,
-    title: 'Mind',
-  ),
-  TabItem(
-    icon: Icons.monitor_heart_rounded,
-    title: 'Health',
-  ),
-  TabItem(
-    icon: Icons.scale_rounded,
-    title: 'Food Diary',
-  ),
-  TabItem(
-    icon: Icons.account_box,
-    title: 'profile',
-  ),
+List<String> progressText = [
+  "Meditations",
+  "Exercise",
+  "Diet",
 ];
 
-class HomeScreen extends StatefulWidget {
-  final String id = 'home_screen';
-
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => HomeScreenState();
-}
-
-class HomeScreenState extends State<HomeScreen> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      //Bottom Navigation Bar still in development
-      bottomNavigationBar: Container(
-        child: BottomBarDefault(
-          animated: true,
-          items: items,
-          backgroundColor: Colors.white,
-          color: Colors.grey,
-          colorSelected: Colors.deepPurple,
-          indexSelected: visit,
-          paddingVertical: 5,
-          onTap: (int index) => setState(
-            () {
-              visit = index;
-            },
-          ),
-        ),
-      ),
-      drawer: Drawer(
-        elevation: 0,
-        child: FractionallySizedBox(
-          widthFactor: 1,
-          child: Container(
-            color: Color(
-              kMyGrey,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          AspectRatio(
+            aspectRatio: 2,
+            child: Container(
+              alignment: Alignment.center,
+              child: Image(
+                image: AssetImage(
+                  'images/logo_test.png',
+                ),
+              ),
             ),
-            child: SideMenu(),
           ),
-        ),
-      ),
-      appBar: AppBar(
-        elevation: 0,
-        iconTheme: IconThemeData(color: Color(kMyPurple)),
-        backgroundColor: Colors.white,
-        title: Text(
-          AppBarTitles.elementAt(visit),
-          style: TextStyle(color: Colors.black),
-        ),
-      ),
-      body: Container(
-        child: pages.elementAt(visit),
-      ),
-    );
-  }
-}
-
-class SideMenu extends StatelessWidget {
-  const SideMenu({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: 30,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 10.0),
-          child: Column(
-            children: [Text('Data ... '), Text('Data ... ')],
+          SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 10.0,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Hi Emad',
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  'You can book your COVID-19 booster dose after February 25.',
+                  style: Theme.of(context).textTheme.labelMedium,
+                  maxLines: 2,
+                ),
+              ],
+            ),
           ),
-        ),
-        Divider(
-          color: Colors.grey,
-          height: 50,
-          thickness: 2,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 10.0),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Icon(Icons.settings_rounded),
-                  SizedBox(
-                    width: 20,
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+            alignment: Alignment.centerLeft,
+            // color: Colors.deepPurple,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Friday, 18 February',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ListTile(
+                  contentPadding: EdgeInsets.symmetric(vertical: 5),
+                  leading: Icon(
+                    Icons.sentiment_very_satisfied_rounded,
+                    size: 50,
+                    color: Color(kMyPurple),
                   ),
-                  Text(
-                    'Settings',
+                  title: Text(
+                    'How are you feeling today?',
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
-                ],
-              ),
-              Row(
-                children: [
-                  Icon(Icons.ios_share_rounded),
-                  SizedBox(
-                    width: 20,
+                  subtitle: Text('DAILY CHECK IN'),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 18,
+                    color: Colors.grey[400],
                   ),
-                  Text(
-                    'Settings',
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Icon(Icons.exit_to_app_rounded),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text(
-                    'Settings',
-                  ),
-                ],
-              ),
-            ],
+                ),
+                Divider(
+                  color: Colors.black12,
+                  height: 0,
+                  thickness: 2 / 3,
+                  indent: 10,
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
-    );
-  }
-}
-
-class HomeScreenDetails extends StatelessWidget {
-  const HomeScreenDetails({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text('Testinggg Health...'),
-    );
-  }
-}
-
-class MindScreen extends StatelessWidget {
-  const MindScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text('Testinggg Minddd...'),
-    );
-  }
-}
-
-class FoodDiaryScreen extends StatelessWidget {
-  const FoodDiaryScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text('Testinggg Food Diary...'),
-    );
-  }
-}
-
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text('Testinggg Profile...'),
+          // SizedBox(height: 0),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            alignment: Alignment.centerLeft,
+            // color: Colors.deepPurple,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Your Progress',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ListView.builder(
+                  physics: ScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        ListTile(
+                          contentPadding: EdgeInsets.symmetric(vertical: 5),
+                          leading: progressIcons[index],
+                          title: Text(
+                            progressText[index],
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
+                          trailing: Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            size: 18,
+                            color: Colors.grey[400],
+                          ),
+                        ),
+                        Divider(
+                          color: Colors.black12,
+                          height: 10,
+                          thickness: 2 / 3,
+                          indent: 10,
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
