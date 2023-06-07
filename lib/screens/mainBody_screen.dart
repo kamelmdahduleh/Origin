@@ -6,10 +6,10 @@ import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:smpa_e_health/constants.dart';
 
+import 'food_diary_screen.dart';
 import 'health_screen.dart';
 import 'home_screen.dart';
 import 'profile_screen.dart';
-import 'mind_screen.dart';
 
 //
 
@@ -211,6 +211,17 @@ class SideMenu extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class MindScreen extends StatelessWidget {
+  const MindScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text('Testinggg Minddd...'),
     );
   }
 }
