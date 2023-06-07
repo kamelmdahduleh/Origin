@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
           headlineSmall: TextStyle(
               fontSize: 17, color: Colors.black, fontWeight: FontWeight.w600),
           labelMedium: TextStyle(fontSize: 15, color: Colors.black),
+          labelSmall: TextStyle(fontSize: 12, color: Colors.black38),
         ),
         appBarTheme: AppBarTheme(
           systemOverlayStyle: SystemUiOverlayStyle(

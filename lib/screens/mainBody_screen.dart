@@ -9,6 +9,7 @@ import 'package:smpa_e_health/constants.dart';
 import 'health_screen.dart';
 import 'home_screen.dart';
 import 'profile_screen.dart';
+import 'mind_screen.dart';
 
 //
 
@@ -71,7 +72,7 @@ class BodyScreenState extends State<BodyScreen> {
           items: items,
           backgroundColor: Colors.white,
           color: Colors.grey,
-          colorSelected: Colors.deepPurple,
+          colorSelected: Color(kMyPurple),
           indexSelected: visit,
           paddingVertical: 5,
           onTap: (int index) => setState(
@@ -210,17 +211,6 @@ class SideMenu extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class MindScreen extends StatelessWidget {
-  const MindScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text('Testinggg Minddd...'),
     );
   }
 }

@@ -26,6 +26,7 @@ List<String> progressText = [
   "Exercise",
   "Diet",
 ];
+List<Icon> faceIcons = [Icon(Icons.face_2)];
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -181,6 +182,7 @@ class HRUPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('How are you feeling today?'),
       ),
       body: SingleChildScrollView(
@@ -218,7 +220,7 @@ class HRUPage extends StatelessWidget {
             ),
             Divider(
               height: 50,
-              thickness: 20,
+              thickness: 12,
               color: Color(kMyDividerColor),
             ),
             Container(
