@@ -72,9 +72,11 @@ class MindScreen extends StatelessWidget {
                               ),
                               Flexible(
                                 flex: 1,
-                                child: Expanded(
+                                child: FractionallySizedBox(
+                                  widthFactor: 1,
                                   child: Container(
                                     height: 70,
+                                    // width: 100,
                                     color: Colors.amber,
                                     child: Text('data'),
                                   ),
