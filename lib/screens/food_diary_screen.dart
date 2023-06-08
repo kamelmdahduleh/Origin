@@ -34,7 +34,11 @@ class _FoodDiaryListState extends State<FoodDiaryList> {
                 minWidth: MediaQuery.of(context).size.width,
                 elevation: 0,
                 color: const Color(0xFFE9E8F0),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return FoodQuestionnaireForm();
+                  }));
+                },
                 child: const Text(
                   'Food Questionnaire',
                   style: TextStyle(
@@ -48,7 +52,7 @@ class _FoodDiaryListState extends State<FoodDiaryList> {
               ),
             ),
             const SizedBox(
-              height: 5,
+              height: 10,
             ),
             const Image(
                 image:
@@ -136,11 +140,90 @@ class _FoodDiaryListState extends State<FoodDiaryList> {
   }
 }
 
-class FoodQuestionaireForm extends StatelessWidget {
-  const FoodQuestionaireForm({super.key});
+class FoodQuestionnaireForm extends StatelessWidget {
+  FoodQuestionnaireForm({super.key});
+
+  final List<String> questionnaireFormList = [
+    "Do you eat less than 5 portions of fruit and vegetables a day?",
+    "Do you eat fried food every day?",
+    "Do you drink fizzy drinks every day?",
+    "Do you eat fast food more than once a week?",
+    "Do you eat more than 2 bars of chocolate a week?",
+    "Do you ever skip a breakfast?",
+    "Do you often eat after 6PM?"
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        leading: TextButton(
+          child: const Text(
+            'Cancel',
+            style: TextStyle(fontSize: 17),
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        actions: [
+          TextButton(
+            child: const Text(
+              'Submit',
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+            ),
+            onPressed: () {},
+          ),
+        ],
+        leadingWidth: 100,
+        title: const Text('Form'),
+        centerTitle: true,
+      ),
+      body: ListView.builder(
+        itemCount: questionnaireFormList.length,
+        itemBuilder: (context, index) {
+          return Container(
+            margin: const EdgeInsets.symmetric(horizontal: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  questionnaireFormList[index],
+                  style: const TextStyle(fontSize: 18),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    const Text(
+                      'Yes',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    Checkbox(
+                      value: false,
+                      onChanged: (value) {},
+                    ),
+                    const Text(
+                      'No',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    Checkbox(
+                      value: false,
+                      onChanged: (value) {},
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
   }
 }
