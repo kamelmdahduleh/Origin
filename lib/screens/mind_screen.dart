@@ -5,7 +5,48 @@ import 'package:flutter/material.dart';
 
 //Pages
 import 'package:smpa_e_health/constants.dart';
+
 //
+class listRow {
+  String? listTitle;
+  double? listReview;
+  String? listDuration;
+  String? listImage;
+  listRow({this.listTitle, this.listReview, this.listDuration, this.listImage});
+}
+
+List RowList = [
+  listRow(
+    listTitle: "Mindfulness for Releasing Anxiety",
+    listReview: 4.5,
+    listDuration: "10 min",
+    listImage: "",
+  ),
+  listRow(
+    listTitle: "Mindfulness for Releasing Anxiety",
+    listReview: 4.5,
+    listDuration: "10 min",
+    listImage: "",
+  ),
+  listRow(
+    listTitle: "Mindfulness for Releasing Anxiety",
+    listReview: 4.5,
+    listDuration: "10 min",
+    listImage: "",
+  ),
+  listRow(
+    listTitle: "Mindfulness for Releasing Anxiety",
+    listReview: 4.5,
+    listDuration: "10 min",
+    listImage: "",
+  ),
+  listRow(
+    listTitle: "Mindfulness for Releasing Anxiety",
+    listReview: 4.5,
+    listDuration: "10 min",
+    listImage: "",
+  ),
+];
 
 class MindScreen extends StatelessWidget {
   const MindScreen({super.key});
