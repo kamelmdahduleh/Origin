@@ -52,7 +52,7 @@ class _FoodDiaryListState extends State<FoodDiaryList> {
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: 5,
             ),
             const Image(
                 image:
@@ -120,7 +120,7 @@ class _FoodDiaryListState extends State<FoodDiaryList> {
                         ),
                       ),
                       SizedBox(
-                        width: 10,
+                        width: 5,
                       ),
                       Expanded(
                         child: Image(
