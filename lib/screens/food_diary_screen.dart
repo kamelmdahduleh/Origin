@@ -109,7 +109,7 @@ class _FoodDiaryListState extends State<FoodDiaryList> {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   const Row(
                     children: [
