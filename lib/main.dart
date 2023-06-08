@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:smpa_e_health/constants.dart';
 import 'package:smpa_e_health/screens/health_screen.dart';
-import 'screens/mainBody_screen.dart';
+
 import 'screens/login_screen.dart';
+import 'screens/mainBody_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,10 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Roboto',
         textTheme: TextTheme(
           headlineLarge: TextStyle(
-              fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+            fontSize: 20,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
           headlineSmall: TextStyle(
               fontSize: 17, color: Colors.black, fontWeight: FontWeight.w600),
           labelMedium: TextStyle(fontSize: 15, color: Colors.black),
