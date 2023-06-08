@@ -9,6 +9,7 @@ import 'package:smpa_e_health/constants.dart';
 import 'food_diary_screen.dart';
 import 'health_screen.dart';
 import 'home_screen.dart';
+import 'mind_screen.dart';
 import 'profile_screen.dart';
 import 'mind_screen.dart';
 
