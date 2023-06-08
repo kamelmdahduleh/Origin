@@ -11,6 +11,7 @@ import 'health_screen.dart';
 import 'home_screen.dart';
 import 'mind_screen.dart';
 import 'profile_screen.dart';
+import 'mind_screen.dart';
 
 //
 
