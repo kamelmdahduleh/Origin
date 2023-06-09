@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:smpa_e_health/constants.dart';
 
 class FoodDiaryScreen extends StatelessWidget {
@@ -111,24 +114,72 @@ class _FoodDiaryListState extends State<FoodDiaryList> {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Row(
-                    children: [
-                      Expanded(
-                        child: Image(
-                          image: AssetImage(
-                              'images/food_diary_screen_images/image_1.png'),
+                  AspectRatio(
+                    aspectRatio: 3,
+                    child: Row(
+                      children: [
+                        Flexible(
+                          flex: 1,
+                          child: AspectRatio(
+                            aspectRatio: 3 / 2,
+                            child: FittedBox(
+                              fit: BoxFit.fill,
+                              child: Image.asset(
+                                'images/food_diary_screen_images/food_pic1.jpg',
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Expanded(
-                        child: Image(
-                          image: AssetImage(
-                              'images/food_diary_screen_images/image_2.png'),
+                        VerticalDivider(
+                          color: Colors.transparent,
+                          width: 10,
                         ),
-                      )
-                    ],
+                        Flexible(
+                          flex: 1,
+                          child: AspectRatio(
+                            aspectRatio: 3 / 2,
+                            child: FittedBox(
+                              fit: BoxFit.fill,
+                              child: Image.asset(
+                                'images/food_diary_screen_images/food_pic2.jpg',
+                              ),
+                            ),
+                          ),
+                        ),
+                        // FittedBox(
+                        //   fit: BoxFit.fitHeight,
+                        //   child: Image(
+                        //     image: AssetImage(
+                        //         'images/food_diary_screen_images/food_pic1.jpg'),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   width: 5,
+                        // ),
+                        // FittedBox(
+                        //   fit: BoxFit.fitHeight,
+                        //   child: Image(
+                        //     image: AssetImage(
+                        //         'images/food_diary_screen_images/food_pic2.jpg'),
+                        //   ),
+                        // )
+                        // Expanded(
+                        //   child: Image(
+                        //     image: AssetImage(
+                        //         'images/food_diary_screen_images/food_pic1.jpg'),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   width: 5,
+                        // ),
+                        // Expanded(
+                        //   child: Image(
+                        //     image: AssetImage(
+                        //         'images/food_diary_screen_images/food_pic2.jpg'),
+                        //   ),
+                        // )
+                      ],
+                    ),
                   ),
                 ],
               ),
