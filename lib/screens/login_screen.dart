@@ -10,11 +10,12 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: 'Roboto'),
-      home: const MyLogin(),
-    );
+    return MyLogin();
+    // MaterialApp(
+    //   debugShowCheckedModeBanner: false,
+    //   theme: ThemeData(fontFamily: 'Roboto'),
+    //   home: const MyLogin(),
+    // );
   }
 }
 
@@ -30,7 +31,7 @@ class _MyLoginState extends State<MyLogin> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: Drawer(),
+      // drawer: Drawer(),
       appBar: AppBar(
         iconTheme: IconThemeData(color: Color(kMyPurple)),
         elevation: 0,

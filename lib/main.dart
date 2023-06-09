@@ -40,8 +40,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: BodyScreen(),
-      // home: LoginScreen(),
+      // home: BodyScreen(),
+      home: LoginScreen(),
     );
   }
 }

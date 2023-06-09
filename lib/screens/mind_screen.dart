@@ -11,40 +11,64 @@ class listRow {
   String? listTitle;
   double? listReview;
   String? listDuration;
-  String? listImage;
+  Color? listImage;
   listRow({this.listTitle, this.listReview, this.listDuration, this.listImage});
 }
 
+List<String> listTitle = [
+  "Mindfulness for Releasing Anxiety",
+  "Deep Healing",
+  "Decrease Anxiery & Increase Peace",
+  "Relieving Anxiety - Feeling Grounded",
+];
+List<double> listRating = [
+  4.5,
+  4.9,
+  4.8,
+  4.5,
+];
+List<String> listDuration = [
+  "10 min",
+  "23 min",
+  "12 min",
+  "17 min",
+];
+List<String> listImagePath = [
+  "images/smpa_mind_pics/mindPic1.jpg",
+  "images/smpa_mind_pics/mindPic2.jpg",
+  "images/smpa_mind_pics/mindPic3.jpg",
+  "images/smpa_mind_pics/mindPic4.jpg",
+];
 List RowList = [
   listRow(
     listTitle: "Mindfulness for Releasing Anxiety",
     listReview: 4.5,
     listDuration: "10 min",
-    listImage: "",
+    listImage: Color(kMyPurple),
   ),
   listRow(
     listTitle: "Mindfulness for Releasing Anxiety",
     listReview: 4.5,
     listDuration: "10 min",
-    listImage: "",
+    listImage: Color(kMyPurple),
   ),
   listRow(
     listTitle: "Mindfulness for Releasing Anxiety",
     listReview: 4.5,
     listDuration: "10 min",
-    listImage: "",
+    listImage: Color(kMyPurple),
   ),
   listRow(
     listTitle: "Mindfulness for Releasing Anxiety",
     listReview: 4.5,
     listDuration: "10 min",
-    listImage: "",
+    listImage: Color(kMyPurple),
   ),
   listRow(
     listTitle: "Mindfulness for Releasing Anxiety",
     listReview: 4.5,
     listDuration: "10 min",
-    listImage: "",
+    listImage: Color(kMyPurple),
   ),
 ];
 
@@ -93,17 +117,17 @@ class MindScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Textttt",
+                                      listTitle[index],
                                       style: TextStyle(fontSize: 15),
                                     ),
                                     Text(
-                                      "4.7",
+                                      listRating[index].toString(),
                                       style: Theme.of(context)
                                           .textTheme
                                           .labelSmall,
                                     ),
                                     Text(
-                                      '22 min',
+                                      listDuration[index],
                                       style: Theme.of(context)
                                           .textTheme
                                           .labelSmall,
@@ -118,46 +142,16 @@ class MindScreen extends StatelessWidget {
                                   child: Container(
                                     height: 70,
                                     // width: 100,
-                                    color: Colors.amber,
-                                    child: Text('data'),
+                                    // color: Colors.red,
+                                    child: FittedBox(
+                                      fit: BoxFit.cover,
+                                      child: Image.asset(listImagePath[index]),
+                                    ),
                                   ),
                                 ),
                               ),
                             ],
                           ),
-                          // ListTile(
-                          //   contentPadding: EdgeInsets.all(0),
-                          //   visualDensity: VisualDensity.compact,
-                          //   dense: true,
-                          //   isThreeLine: true,
-                          //   titleTextStyle:
-                          //       Theme.of(context).textTheme.headlineLarge,
-                          //   title: Text(
-                          //     "Textttt",
-                          //     style: TextStyle(fontSize: 15),
-                          //   ),
-                          //   subtitle: Column(
-                          //     crossAxisAlignment: CrossAxisAlignment.start,
-                          //     children: [
-                          //       Text(
-                          //         "4.7",
-                          //         style: Theme.of(context).textTheme.labelSmall,
-                          //       ),
-                          //       Text(
-                          //         '22 min',
-                          //         style: Theme.of(context).textTheme.labelSmall,
-                          //       ),
-                          //     ],
-                          //   ),
-                          //   trailing: Container(
-                          //     height: double.infinity,
-                          //     width: 100,
-                          //     color: Colors.amber,
-                          //     // child: AspectRatio(
-                          //     //   aspectRatio: 2,
-                          //     // ),
-                          //   ),
-                          // ),
                           Divider(
                             color: Colors.black12,
                             height: 10,

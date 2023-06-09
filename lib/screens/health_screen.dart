@@ -6,6 +6,7 @@ import 'dart:math' as math;
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 // Pages
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:smpa_e_health/constants.dart';
 
 int visit = 0;
@@ -29,6 +30,39 @@ const List<TabItem> items = [
   TabItem(
     icon: Icons.account_box,
     title: 'profile',
+  ),
+];
+
+List<Icon> healthIcons = [
+  Icon(
+    Icons.directions_run_rounded,
+    size: 40,
+    color: Colors.deepPurple,
+  ),
+  Icon(
+    Icons.monitor_heart_rounded,
+    size: 40,
+    color: Colors.deepPurple,
+  ),
+  Icon(
+    MdiIcons.fire,
+    size: 40,
+    color: Colors.deepPurple,
+  ),
+  Icon(
+    Icons.nightlight_round_sharp,
+    size: 40,
+    color: Colors.deepPurple,
+  ),
+  Icon(
+    MdiIcons.heartPulse,
+    size: 40,
+    color: Colors.deepPurple,
+  ),
+  Icon(
+    Icons.device_thermostat_outlined,
+    size: 40,
+    color: Colors.deepPurple,
   ),
 ];
 
@@ -187,11 +221,7 @@ class HealthScreenState extends State<HealthScreen> {
                           child: Container(
                             // color: Colors.deepPurple[100],
                             child: ListTile(
-                              leading: Icon(
-                                Icons.directions_run_rounded,
-                                size: 40,
-                                color: Colors.deepPurple,
-                              ),
+                              leading: healthIcons[index],
                               title: Text(
                                 'Exercising',
                                 style: TextStyle(
