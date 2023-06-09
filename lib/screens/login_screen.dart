@@ -11,11 +11,6 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyLogin();
-    // MaterialApp(
-    //   debugShowCheckedModeBanner: false,
-    //   theme: ThemeData(fontFamily: 'Roboto'),
-    //   home: const MyLogin(),
-    // );
   }
 }
 
