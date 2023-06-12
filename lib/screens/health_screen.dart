@@ -32,7 +32,14 @@ const List<TabItem> items = [
     title: 'profile',
   ),
 ];
-
+List<String> healthTitles = [
+  "Exercising",
+  "Heart Rate",
+  "Calories",
+  "Sleep",
+  "Blood Pressure",
+  "Temperature"
+];
 List<Icon> healthIcons = [
   Icon(
     Icons.directions_run_rounded,
@@ -218,21 +225,30 @@ class HealthScreenState extends State<HealthScreen> {
                             horizontal: 5,
                             vertical: 10,
                           ),
-                          child: Container(
-                            // color: Colors.deepPurple[100],
-                            child: ListTile(
-                              leading: healthIcons[index],
-                              title: Text(
-                                'Exercising',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SleepPage()),
+                              );
+                            },
+                            child: Container(
+                              // color: Colors.deepPurple[100],
+                              child: ListTile(
+                                leading: healthIcons[index],
+                                title: Text(
+                                  healthTitles[index],
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
                                 ),
-                              ),
-                              trailing: Icon(
-                                Icons.arrow_forward_ios_rounded,
-                                color: Color(0xFF9E9E9E),
-                                size: 20,
+                                trailing: Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  color: Color(0xFF9E9E9E),
+                                  size: 20,
+                                ),
                               ),
                             ),
                           ),
@@ -267,6 +283,60 @@ class HealthScreenState extends State<HealthScreen> {
                 ],
               )
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SleepPage extends StatefulWidget {
+  const SleepPage({super.key});
+
+  @override
+  State<SleepPage> createState() => _SleepPageState();
+}
+
+class _SleepPageState extends State<SleepPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        scrolledUnderElevation: 0,
+        leadingWidth: 100,
+        leading: Row(
+          children: [
+            IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.arrow_back_ios_new,
+                color: Color(kMyPurple),
+              ),
+            ),
+            const Text(
+              'Back',
+              style: TextStyle(
+                fontSize: 18,
+                color: Color(kMyPurple),
+              ),
+            )
+          ],
+        ),
+        title: const Text(
+          'Sleep',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: Container(
+            color: Colors.yellow,
           ),
         ),
       ),

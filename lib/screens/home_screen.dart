@@ -289,6 +289,7 @@ class HRUPage extends StatelessWidget {
                     },
                   ),
                   Container(
+                    margin: EdgeInsets.only(top: 20),
                     height: 20,
                     // color: Colors.red,
                     child: Row(
