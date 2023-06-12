@@ -8,6 +8,7 @@ import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:smpa_e_health/constants.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 int visit = 0;
 const List<TabItem> items = [
@@ -335,8 +336,14 @@ class _SleepPageState extends State<SleepPage> {
       body: SingleChildScrollView(
         child: AspectRatio(
           aspectRatio: 1,
-          child: Container(
-            color: Colors.yellow,
+          child: SfCartesianChart(
+            legend: Legend(isVisible: true),
+            primaryXAxis: CategoryAxis(
+              title: AxisTitle(text: "Test X-axis"),
+            ),
+            primaryYAxis: NumericAxis(
+              title: AxisTitle(text: "Test Y-axis"),
+            ),
           ),
         ),
       ),

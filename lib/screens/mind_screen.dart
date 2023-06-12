@@ -143,7 +143,7 @@ class _MindScreenState extends State<MindScreen> {
                         alignment: Alignment.centerRight,
                         child: Text('See All')),
                     ListView.builder(
-                      itemExtent: 110.0,
+                      itemExtent: 100.0,
                       shrinkWrap: true,
                       physics: ScrollPhysics(),
                       itemCount: 4,
