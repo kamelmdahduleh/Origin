@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, unused_import
+// ignore_for_file: camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, unused_import, unused_local_variable
 
 import 'dart:math' as math;
 
@@ -291,6 +291,12 @@ class HealthScreenState extends State<HealthScreen> {
   }
 }
 
+class ChartData {
+  ChartData(this.x, this.y);
+  final String x;
+  final double? y;
+}
+
 class SleepPage extends StatefulWidget {
   const SleepPage({super.key});
 
@@ -301,8 +307,19 @@ class SleepPage extends StatefulWidget {
 class _SleepPageState extends State<SleepPage> {
   @override
   Widget build(BuildContext context) {
+    final List<ChartData> chartData = [
+      ChartData('Tue', 0),
+      ChartData('Wed', 84),
+      ChartData('Thu', 84),
+      ChartData('Fri', 82),
+      ChartData('Sat', 86),
+      ChartData('Sun', 79),
+      ChartData('Mon', 78)
+    ];
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         scrolledUnderElevation: 0,
         leadingWidth: 100,
         leading: Row(
@@ -334,15 +351,39 @@ class _SleepPageState extends State<SleepPage> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: AspectRatio(
-          aspectRatio: 1,
-          child: SfCartesianChart(
-            legend: Legend(isVisible: true),
-            primaryXAxis: CategoryAxis(
-              title: AxisTitle(text: "Test X-axis"),
+        child: Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: 10,
+            vertical: 40,
+          ),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromRGBO(31, 25, 67, 1),
+                Color.fromRGBO(46, 51, 96, 0.93),
+              ],
             ),
-            primaryYAxis: NumericAxis(
-              title: AxisTitle(text: "Test Y-axis"),
+          ),
+          child: AspectRatio(
+            aspectRatio: 3 / 2,
+            child: SfCartesianChart(
+              primaryXAxis: CategoryAxis(
+                axisLine: AxisLine(color: Colors.red),
+              ),
+              series: <CartesianSeries>[
+                ColumnSeries<ChartData, String>(
+                  color: Colors.white54,
+                  dataSource: chartData,
+                  xValueMapper: (ChartData data, _) => data.x,
+                  yValueMapper: (ChartData data, _) => data.y,
+                ),
+              ],
+              primaryYAxis: LogarithmicAxis(
+                minimum: 0,
+                interval: 1,
+                maximum: 100,
+                axisLine: AxisLine(color: Colors.red),
+              ),
             ),
           ),
         ),
