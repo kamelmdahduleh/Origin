@@ -286,6 +286,11 @@ class _FoodQuestionnaireFormState extends State<FoodQuestionnaireForm> {
             ),
             onPressed: () {
               Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Submitted Successfully!'),
+                ),
+              );
             },
           ),
         ],
