@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:smpa_e_health/constants.dart';
 
 class FoodDiaryScreen extends StatelessWidget {
@@ -20,7 +19,24 @@ class FoodDiaryList extends StatefulWidget {
   State<FoodDiaryList> createState() => _FoodDiaryListState();
 }
 
+class ChartSampleData {
+  String x;
+
+  double y;
+
+  ChartSampleData({required this.x, required this.y});
+}
+
 class _FoodDiaryListState extends State<FoodDiaryList> {
+  List<ChartSampleData> chartData = <ChartSampleData>[
+    ChartSampleData(x: '1', y: 1700),
+    ChartSampleData(x: '2', y: 1650),
+    ChartSampleData(x: '3', y: 1710),
+    ChartSampleData(x: '4', y: 1670),
+    ChartSampleData(x: '5', y: 1500),
+    ChartSampleData(x: '6', y: 1510),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,9 +73,14 @@ class _FoodDiaryListState extends State<FoodDiaryList> {
             const SizedBox(
               height: 5,
             ),
-            const Image(
-                image:
-                    AssetImage('images/food_diary_screen_images/image_0.png')),
+            // const Image(
+            //   image: AssetImage('images/food_diary_screen_images/image_0.png'),
+            // ),
+            Container(
+              child: Image(
+                  image: AssetImage(
+                      'images/food_diary_screen_images/image_0.png')),
+            ),
             const SizedBox(
               height: 10,
             ),
@@ -191,9 +212,32 @@ class _FoodDiaryListState extends State<FoodDiaryList> {
   }
 }
 
-class FoodQuestionnaireForm extends StatelessWidget {
-  FoodQuestionnaireForm({super.key});
+class FoodQuestionnaireForm extends StatefulWidget {
+  const FoodQuestionnaireForm({super.key});
 
+  @override
+  State<FoodQuestionnaireForm> createState() => _FoodQuestionnaireFormState();
+}
+
+class _FoodQuestionnaireFormState extends State<FoodQuestionnaireForm> {
+  List<bool> checkedValueY = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ];
+  List<bool> checkedValueN = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ];
   final List<String> questionnaireFormList = [
     "Do you eat less than 5 portions of fruit and vegetables a day?",
     "Do you eat fried food every day?",
@@ -210,22 +254,39 @@ class FoodQuestionnaireForm extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: TextButton(
+        leading: MaterialButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
           child: const Text(
             'Cancel',
-            style: TextStyle(fontSize: 17),
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
+              color: Color(kMyPurple),
+            ),
           ),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         actions: [
-          TextButton(
+          MaterialButton(
+            padding: EdgeInsets.all(15),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
             child: const Text(
               'Submit',
-              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+                color: Color(kMyPurple),
+              ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
         ],
         leadingWidth: 100,
@@ -254,16 +315,26 @@ class FoodQuestionnaireForm extends StatelessWidget {
                       style: TextStyle(fontSize: 18),
                     ),
                     Checkbox(
-                      value: false,
-                      onChanged: (value) {},
+                      value: checkedValueY[index],
+                      onChanged: (value) {
+                        setState(() {
+                          checkedValueY[index] = !checkedValueY[index];
+                          checkedValueN[index] = !checkedValueY[index];
+                        });
+                      },
                     ),
                     const Text(
                       'No',
                       style: TextStyle(fontSize: 18),
                     ),
                     Checkbox(
-                      value: false,
-                      onChanged: (value) {},
+                      value: checkedValueN[index],
+                      onChanged: (value) {
+                        setState(() {
+                          checkedValueN[index] = !checkedValueN[index];
+                          checkedValueY[index] = !checkedValueN[index];
+                        });
+                      },
                     )
                   ],
                 ),
