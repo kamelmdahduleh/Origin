@@ -45,3 +45,26 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+class ComingSoonScreen extends StatelessWidget {
+  const ComingSoonScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+      ),
+      body: Center(
+        child: Text(
+          'Coming Soon ... ',
+          style: TextStyle(
+              fontSize: 32,
+              color: Color(kMyPurple),
+              fontWeight: FontWeight.w600),
+        ),
+      ),
+    );
+  }
+}

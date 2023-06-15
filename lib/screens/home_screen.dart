@@ -2,7 +2,29 @@
 
 import 'package:flutter/material.dart';
 import 'package:smpa_e_health/constants.dart';
+import 'package:smpa_e_health/main.dart';
 
+List<String> moodsPath = [
+  "images/emotions/sleeping_hires.png",
+  "images/emotions/happy_hires.png",
+  "images/emotions/neutral-emoticon_hires.png",
+  "images/emotions/confused_hires.png",
+  "images/emotions/sad_hires.png",
+];
+List<String> moods = [
+  "GREAT",
+  "GOOD",
+  "OKAY",
+  "BAD",
+  "AWFUL",
+];
+List<Color> moodsColor = [
+  Colors.green,
+  Colors.lime,
+  Colors.amber,
+  Colors.lightBlue,
+  Colors.deepPurple
+];
 List<String> days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 List<Icon> progressIcons = [
   Icon(
@@ -143,17 +165,26 @@ class HomeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
-                        ListTile(
-                          contentPadding: EdgeInsets.symmetric(vertical: 5),
-                          leading: progressIcons[index],
-                          title: Text(
-                            progressText[index],
-                            style: Theme.of(context).textTheme.headlineSmall,
-                          ),
-                          trailing: Icon(
-                            Icons.arrow_forward_ios_rounded,
-                            size: 18,
-                            color: Colors.grey[400],
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ComingSoonScreen()),
+                            );
+                          },
+                          child: ListTile(
+                            contentPadding: EdgeInsets.symmetric(vertical: 5),
+                            leading: progressIcons[index],
+                            title: Text(
+                              progressText[index],
+                              style: Theme.of(context).textTheme.headlineSmall,
+                            ),
+                            trailing: Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              size: 18,
+                              color: Colors.grey[400],
+                            ),
                           ),
                         ),
                         Divider(
@@ -196,25 +227,35 @@ class HRUPage extends StatelessWidget {
             ),
             AspectRatio(
               aspectRatio: 3,
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: ScrollPhysics(),
-                itemCount: 5,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.tag_faces_rounded,
-                      size: 80,
-                      color: Colors.lightGreen,
-                    ),
-                    Text(
-                      'Great',
-                      style: TextStyle(color: Colors.lightGreen),
-                    ),
-                  ],
+              child: Expanded(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: ScrollPhysics(),
+                  itemCount: moodsPath.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                          margin: EdgeInsets.symmetric(horizontal: 5),
+                          width: 70,
+                          height: 70,
+                          child: Image.asset(moodsPath[index])),
+                      // Icon(
+                      //   Icons.tag_faces_rounded,
+                      //   size: 80,
+                      //   color: Colors.lightGreen,
+                      // ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        moods[index],
+                        style: TextStyle(color: moodsColor[index]),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

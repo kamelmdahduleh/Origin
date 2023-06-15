@@ -4,10 +4,12 @@ import 'dart:math' as math;
 
 // Package
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
+import 'package:fl_chart/fl_chart.dart';
 // Pages
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:smpa_e_health/constants.dart';
+import 'package:smpa_e_health/main.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 int visit = 0;
@@ -136,20 +138,26 @@ class HealthScreenState extends State<HealthScreen> {
                     children: [
                       Align(
                           alignment: Alignment.centerLeft,
-                          child: Text(
-                            'Device Connected',
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.black87,
-                            ),
+                          child: Container(
+                            margin: EdgeInsets.only(left: 5),
+                            child: Text('Device Connected',
+                                style: Theme.of(context).textTheme.labelLarge),
                           )),
                       SizedBox(
                         height: 10,
                       ),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        height: 30,
-                        // color: Colors.blue,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 5,
+                        ),
+                        height: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            10,
+                          ),
+                          color: Color.fromARGB(118, 237, 231, 246),
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -172,24 +180,33 @@ class HealthScreenState extends State<HealthScreen> {
                         ),
                       ),
                       SizedBox(height: 10),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            10,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ComingSoonScreen()),
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              10,
+                            ),
+                            color: Colors.deepPurple[50],
                           ),
-                          color: Colors.deepPurple[50],
-                        ),
-                        height: 50,
-                        width: double.infinity,
-                        child: Center(
-                          child: FittedBox(
-                            fit: BoxFit.fitHeight,
-                            child: Text(
-                              'Connect a New Device',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 19,
-                                  color: Colors.deepPurple[600]),
+                          height: 50,
+                          width: double.infinity,
+                          child: Center(
+                            child: FittedBox(
+                              fit: BoxFit.fitHeight,
+                              child: Text(
+                                'Connect a New Device',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 19,
+                                    color: Colors.deepPurple[600]),
+                              ),
                             ),
                           ),
                         ),
@@ -228,11 +245,18 @@ class HealthScreenState extends State<HealthScreen> {
                           ),
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SleepPage()),
-                              );
+                              healthTitles[index] == 'Sleep'
+                                  ? Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SleepPage()),
+                                    )
+                                  : Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ComingSoonScreen()),
+                                    );
                             },
                             child: Container(
                               // color: Colors.deepPurple[100],
@@ -257,25 +281,34 @@ class HealthScreenState extends State<HealthScreen> {
                       },
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        10,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ComingSoonScreen()),
+                      );
+                    },
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          10,
+                        ),
+                        color: Color(0xFF443A82),
                       ),
-                      color: Color(0xFF443A82),
-                    ),
-                    height: 50,
-                    width: double.infinity,
-                    child: Center(
-                      child: FittedBox(
-                        fit: BoxFit.fitHeight,
-                        child: Text(
-                          'Health Risk Assessment',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 19,
-                            color: Colors.white,
+                      height: 50,
+                      width: double.infinity,
+                      child: Center(
+                        child: FittedBox(
+                          fit: BoxFit.fitHeight,
+                          child: Text(
+                            'Health Risk Assessment',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 19,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
@@ -293,8 +326,8 @@ class HealthScreenState extends State<HealthScreen> {
 
 class ChartData {
   ChartData(this.x, this.y);
-  final String x;
-  final double? y;
+  final dynamic x;
+  final dynamic y;
 }
 
 class SleepPage extends StatefulWidget {
@@ -316,6 +349,7 @@ class _SleepPageState extends State<SleepPage> {
       ChartData('Sun', 79),
       ChartData('Mon', 78)
     ];
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -357,34 +391,64 @@ class _SleepPageState extends State<SleepPage> {
             vertical: 40,
           ),
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color.fromRGBO(31, 25, 67, 1),
-                Color.fromRGBO(46, 51, 96, 0.93),
-              ],
-            ),
-          ),
+              // gradient: LinearGradient(
+              //   colors: [
+              //     Color.fromRGBO(31, 25, 67, 1),
+              //     Color.fromRGBO(46, 51, 96, 0.93),
+              //   ],
+              // ),
+              ),
           child: AspectRatio(
             aspectRatio: 3 / 2,
-            child: SfCartesianChart(
-              primaryXAxis: CategoryAxis(
-                axisLine: AxisLine(color: Colors.red),
-              ),
-              series: <CartesianSeries>[
-                ColumnSeries<ChartData, String>(
-                  color: Colors.white54,
-                  dataSource: chartData,
-                  xValueMapper: (ChartData data, _) => data.x,
-                  yValueMapper: (ChartData data, _) => data.y,
-                ),
-              ],
-              primaryYAxis: LogarithmicAxis(
-                minimum: 0,
-                interval: 1,
-                maximum: 100,
-                axisLine: AxisLine(color: Colors.red),
+            //
+
+            // ----------------------
+            child: BarChart(
+              BarChartData(
+                maxY: 100,
+                baselineY: 0,
+                barGroups: [
+                  BarChartGroupData(barsSpace: 50, x: 1, barRods: [
+                    BarChartRodData(
+                      toY: 90,
+                      borderRadius: BorderRadius.circular(0),
+                    ),
+                    BarChartRodData(
+                      toY: 64,
+                      borderRadius: BorderRadius.circular(0),
+                    ),
+                    BarChartRodData(
+                      toY: 83,
+                      borderRadius: BorderRadius.circular(0),
+                    ),
+                    BarChartRodData(
+                      toY: 54,
+                      borderRadius: BorderRadius.circular(0),
+                    ),
+                  ])
+                ],
               ),
             ),
+            // --------------
+            // child: SfCartesianChart(
+            //   primaryXAxis: CategoryAxis(
+            //     axisLine: AxisLine(color: Colors.red),
+            //   ),
+            //   series: <CartesianSeries>[
+            //     ColumnSeries<ChartData, String>(
+            //       color: Colors.white54,
+            //       dataSource: chartData,
+            //       xValueMapper: (ChartData data, _) => data.x,
+            //       yValueMapper: (ChartData data, _) => data.y,
+            //     ),
+            //   ],
+            //   primaryYAxis: LogarithmicAxis(
+            //     minimum: 0,
+            //     interval: 1,
+            //     maximum: 100,
+            //     axisLine: AxisLine(color: Color.fromRGBO(165, 52, 44, 1)),
+            //   ),
+            // ),
           ),
         ),
       ),

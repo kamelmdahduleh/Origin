@@ -33,6 +33,7 @@ class _MyLoginState extends State<MyLogin> {
       backgroundColor: Colors.white,
       // drawer: Drawer(),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         iconTheme: IconThemeData(color: Color(kMyPurple)),
         elevation: 0,
         backgroundColor: Colors.white,
