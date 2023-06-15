@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:smpa_e_health/constants.dart';
+import 'package:smpa_e_health/main.dart';
 
 class FoodDiaryScreen extends StatelessWidget {
   const FoodDiaryScreen({super.key});
@@ -113,7 +114,13 @@ class _FoodDiaryListState extends State<FoodDiaryList> {
                     height: 50,
                     minWidth: MediaQuery.of(context).size.width,
                     elevation: 0,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ComingSoonScreen()),
+                      );
+                    },
                     child: const Text(
                       'View Weight Progress',
                       style: TextStyle(

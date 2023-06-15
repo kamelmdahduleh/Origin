@@ -5,7 +5,8 @@ import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 // Pages
 import 'package:flutter/material.dart';
 import 'package:smpa_e_health/constants.dart';
-
+import 'package:smpa_e_health/screens/login_screen.dart';
+import '../main.dart';
 import 'food_diary_screen.dart';
 import 'health_screen.dart';
 import 'home_screen.dart';
@@ -166,47 +167,73 @@ class SideMenu extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20.0),
           child: Column(
             children: [
-              Row(
-                children: [
-                  Icon(Icons.settings_rounded),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text('Settings',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 17)),
-                ],
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ComingSoonScreen()),
+                  );
+                },
+                child: Row(
+                  children: [
+                    Positioned(child: Stack()),
+                    Icon(Icons.settings_rounded),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text('Settings',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 17)),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 15,
               ),
-              Row(
-                children: [
-                  Icon(
-                    Icons.ios_share_rounded,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text('About',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 17)),
-                ],
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ComingSoonScreen()),
+                  );
+                },
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.ios_share_rounded,
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text('About',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 17)),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 15,
               ),
-              Row(
-                children: [
-                  Icon(Icons.exit_to_app_rounded),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text(
-                    'Sign Out',
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
-                  ),
-                ],
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                  );
+                },
+                child: Row(
+                  children: [
+                    Icon(Icons.exit_to_app_rounded),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      'Sign Out',
+                      style:
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

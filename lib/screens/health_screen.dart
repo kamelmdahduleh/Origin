@@ -156,7 +156,7 @@ class HealthScreenState extends State<HealthScreen> {
                           borderRadius: BorderRadius.circular(
                             10,
                           ),
-                          color: Colors.deepPurple[50],
+                          color: Color.fromARGB(118, 237, 231, 246),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -193,7 +193,7 @@ class HealthScreenState extends State<HealthScreen> {
                             borderRadius: BorderRadius.circular(
                               10,
                             ),
-                            color: Colors.deepPurple[100],
+                            color: Colors.deepPurple[50],
                           ),
                           height: 50,
                           width: double.infinity,
@@ -245,11 +245,18 @@ class HealthScreenState extends State<HealthScreen> {
                           ),
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SleepPage()),
-                              );
+                              healthTitles[index] == 'Sleep'
+                                  ? Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SleepPage()),
+                                    )
+                                  : Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ComingSoonScreen()),
+                                    );
                             },
                             child: Container(
                               // color: Colors.deepPurple[100],
