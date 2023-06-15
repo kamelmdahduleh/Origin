@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:smpa_e_health/constants.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class FoodDiaryScreen extends StatelessWidget {
   const FoodDiaryScreen({super.key});
@@ -48,7 +49,8 @@ class _FoodDiaryListState extends State<FoodDiaryList> {
               margin: const EdgeInsets.symmetric(horizontal: 20),
               child: MaterialButton(
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 height: 50,
                 minWidth: MediaQuery.of(context).size.width,
                 elevation: 0,
@@ -77,9 +79,31 @@ class _FoodDiaryListState extends State<FoodDiaryList> {
             //   image: AssetImage('images/food_diary_screen_images/image_0.png'),
             // ),
             Container(
-              child: Image(
-                  image: AssetImage(
-                      'images/food_diary_screen_images/image_0.png')),
+              child: SfCartesianChart(
+                title: ChartTitle(
+                  text: 'Cal in vs. Out',
+                  textStyle: TextStyle(color: Colors.white),
+                ),
+                backgroundColor: Color(kMyPurple),
+                primaryXAxis: CategoryAxis(
+                  isVisible: false,
+                ),
+                series: <CartesianSeries>[
+                  ColumnSeries<ChartSampleData, String>(
+                    color: Colors.white24,
+                    width: 0.3,
+                    dataSource: chartData,
+                    xValueMapper: (ChartSampleData data, _) => data.x,
+                    yValueMapper: (ChartSampleData data, _) => data.y,
+                  ),
+                ],
+                primaryYAxis: NumericAxis(
+                  axisLine: AxisLine(color: Color(kMyPurple)),
+                  labelStyle: TextStyle(color: Colors.white),
+                  interval: 750,
+                  maximum: 2250,
+                ),
+              ),
             ),
             const SizedBox(
               height: 10,
