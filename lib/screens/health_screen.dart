@@ -4,6 +4,7 @@ import 'dart:math' as math;
 
 // Package
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
+import 'package:fl_chart/fl_chart.dart';
 // Pages
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -293,8 +294,8 @@ class HealthScreenState extends State<HealthScreen> {
 
 class ChartData {
   ChartData(this.x, this.y);
-  final String x;
-  final double? y;
+  final dynamic x;
+  final dynamic y;
 }
 
 class SleepPage extends StatefulWidget {
@@ -316,6 +317,7 @@ class _SleepPageState extends State<SleepPage> {
       ChartData('Sun', 79),
       ChartData('Mon', 78)
     ];
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -357,34 +359,64 @@ class _SleepPageState extends State<SleepPage> {
             vertical: 40,
           ),
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color.fromRGBO(31, 25, 67, 1),
-                Color.fromRGBO(46, 51, 96, 0.93),
-              ],
-            ),
-          ),
+              // gradient: LinearGradient(
+              //   colors: [
+              //     Color.fromRGBO(31, 25, 67, 1),
+              //     Color.fromRGBO(46, 51, 96, 0.93),
+              //   ],
+              // ),
+              ),
           child: AspectRatio(
             aspectRatio: 3 / 2,
-            child: SfCartesianChart(
-              primaryXAxis: CategoryAxis(
-                axisLine: AxisLine(color: Colors.red),
-              ),
-              series: <CartesianSeries>[
-                ColumnSeries<ChartData, String>(
-                  color: Colors.white54,
-                  dataSource: chartData,
-                  xValueMapper: (ChartData data, _) => data.x,
-                  yValueMapper: (ChartData data, _) => data.y,
-                ),
-              ],
-              primaryYAxis: LogarithmicAxis(
-                minimum: 0,
-                interval: 1,
-                maximum: 100,
-                axisLine: AxisLine(color: Colors.red),
+            //
+
+            // ----------------------
+            child: BarChart(
+              BarChartData(
+                maxY: 100,
+                baselineY: 0,
+                barGroups: [
+                  BarChartGroupData(barsSpace: 50, x: 1, barRods: [
+                    BarChartRodData(
+                      toY: 90,
+                      borderRadius: BorderRadius.circular(0),
+                    ),
+                    BarChartRodData(
+                      toY: 64,
+                      borderRadius: BorderRadius.circular(0),
+                    ),
+                    BarChartRodData(
+                      toY: 83,
+                      borderRadius: BorderRadius.circular(0),
+                    ),
+                    BarChartRodData(
+                      toY: 54,
+                      borderRadius: BorderRadius.circular(0),
+                    ),
+                  ])
+                ],
               ),
             ),
+            // --------------
+            // child: SfCartesianChart(
+            //   primaryXAxis: CategoryAxis(
+            //     axisLine: AxisLine(color: Colors.red),
+            //   ),
+            //   series: <CartesianSeries>[
+            //     ColumnSeries<ChartData, String>(
+            //       color: Colors.white54,
+            //       dataSource: chartData,
+            //       xValueMapper: (ChartData data, _) => data.x,
+            //       yValueMapper: (ChartData data, _) => data.y,
+            //     ),
+            //   ],
+            //   primaryYAxis: LogarithmicAxis(
+            //     minimum: 0,
+            //     interval: 1,
+            //     maximum: 100,
+            //     axisLine: AxisLine(color: Color.fromRGBO(165, 52, 44, 1)),
+            //   ),
+            // ),
           ),
         ),
       ),
