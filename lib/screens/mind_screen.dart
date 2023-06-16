@@ -1,11 +1,11 @@
 // ignore_for_file: camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, must_be_immutable
 import 'package:flutter/material.dart';
-
+import 'package:smpa_e_health/constants.dart';
 //Packages
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
 //Pages
 import '../main.dart';
-import 'package:smpa_e_health/constants.dart';
 
 //
 class listRow {
@@ -219,24 +219,21 @@ class _MindScreenState extends State<MindScreen> {
                 ),
               ),
             ),
-            AspectRatio(
-              aspectRatio: 3 / 2,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(left: 20, bottom: 10),
-                    child: Text(
-                      'Recommended For You',
-                      style: Theme.of(context).textTheme.headlineLarge,
-                    ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(left: 20, bottom: 10),
+                  child: Text(
+                    'Recommended For You',
+                    style: Theme.of(context).textTheme.headlineLarge,
                   ),
-                  YoutubePlayer(
-                    controller: youtubeController,
-                    showVideoProgressIndicator: true,
-                  )
-                ],
-              ),
+                ),
+                YoutubePlayer(
+                  controller: youtubeController,
+                  showVideoProgressIndicator: true,
+                )
+              ],
             ),
           ],
         ),

@@ -227,35 +227,33 @@ class HRUPage extends StatelessWidget {
             ),
             AspectRatio(
               aspectRatio: 3,
-              child: Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: ScrollPhysics(),
-                  itemCount: moodsPath.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                          margin: EdgeInsets.symmetric(horizontal: 5),
-                          width: 70,
-                          height: 70,
-                          child: Image.asset(moodsPath[index])),
-                      // Icon(
-                      //   Icons.tag_faces_rounded,
-                      //   size: 80,
-                      //   color: Colors.lightGreen,
-                      // ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        moods[index],
-                        style: TextStyle(color: moodsColor[index]),
-                      ),
-                    ],
-                  ),
+              child: ListView.builder(
+                shrinkWrap: true,
+                physics: ScrollPhysics(),
+                itemCount: moodsPath.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                        margin: EdgeInsets.symmetric(horizontal: 5),
+                        width: 70,
+                        height: 70,
+                        child: Image.asset(moodsPath[index])),
+                    // Icon(
+                    //   Icons.tag_faces_rounded,
+                    //   size: 80,
+                    //   color: Colors.lightGreen,
+                    // ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      moods[index],
+                      style: TextStyle(color: moodsColor[index]),
+                    ),
+                  ],
                 ),
               ),
             ),

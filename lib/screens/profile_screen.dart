@@ -56,7 +56,8 @@ class _MyListState extends State<MyList> {
                 children: [
                   Image(
                     image: AssetImage(
-                        'images/profile_screen_images/image_$index.png'),
+                      'images/profile_screen_images/image_$index.png',
+                    ),
                     height: 150,
                   ),
                   const SizedBox(
