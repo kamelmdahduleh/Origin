@@ -6,6 +6,7 @@ import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:smpa_e_health/constants.dart';
 import 'package:smpa_e_health/screens/login_screen.dart';
+
 import '../main.dart';
 import 'food_diary_screen.dart';
 import 'health_screen.dart';
@@ -176,14 +177,17 @@ class SideMenu extends StatelessWidget {
                 },
                 child: Row(
                   children: [
-                    Positioned(child: Stack()),
                     Icon(Icons.settings_rounded),
                     SizedBox(
                       width: 20,
                     ),
-                    Text('Settings',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 17)),
+                    Text(
+                      'Settings',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 17,
+                      ),
+                    ),
                   ],
                 ),
               ),

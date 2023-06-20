@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_progress_hud/flutter_progress_hud.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:smpa_e_health/constants.dart';
 import 'package:smpa_e_health/screens/health_screen.dart';
 
@@ -57,12 +59,55 @@ class ComingSoonScreen extends StatelessWidget {
         backgroundColor: Colors.white,
       ),
       body: Center(
-        child: Text(
-          'Coming Soon ... ',
-          style: TextStyle(
-              fontSize: 32,
-              color: Color(kMyPurple),
-              fontWeight: FontWeight.w600),
+        child: Column(
+          children: const [
+            SizedBox(
+              height: 100,
+            ),
+            Image(
+              image: AssetImage('images/logo.png'),
+              height: 150,
+            ),
+            // Text(
+            //   'Coming Soon ... ',
+            //   style: TextStyle(
+            //     fontSize: 32,
+            //     color: Color(kMyPurple),
+            //     fontWeight: FontWeight.w600,
+            //   ),
+            // ),
+            SizedBox(
+              height: 100,
+            ),
+            SpinKitFadingCircle(
+              color: Color(0xFF5e2eba),
+              size: 115,
+            ),
+            Expanded(
+                child: SizedBox(
+              height: 10,
+            )),
+            Text(
+              "Please wait ",
+              style: TextStyle(
+                fontSize: 18,
+                color: Color(0xFF5120ae),
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+              "Working on the Task",
+              style: TextStyle(
+                fontSize: 15,
+                color: Color(0xFF485d98),
+              ),
+            ),
+            SizedBox(
+              height: 40,
+            )
+          ],
         ),
       ),
     );

@@ -4,6 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:smpa_e_health/constants.dart';
 import 'package:smpa_e_health/main.dart';
 
+List<bool> isClicked = [
+  false,
+  false,
+  false,
+  false,
+];
+
 List<String> moodsPath = [
   "images/emotions/sleeping_hires.png",
   "images/emotions/happy_hires.png",
@@ -11,6 +18,7 @@ List<String> moodsPath = [
   "images/emotions/confused_hires.png",
   "images/emotions/sad_hires.png",
 ];
+
 List<String> moods = [
   "GREAT",
   "GOOD",
@@ -27,21 +35,24 @@ List<Color> moodsColor = [
 ];
 List<String> days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 List<Icon> progressIcons = [
-  Icon(
-    Icons.spa_outlined,
-    size: 50,
-    color: Color(kMyPurple),
-  ),
-  Icon(
-    Icons.sports_gymnastics_rounded,
-    size: 50,
-    color: Color(kMyPurple),
-  ),
-  Icon(
-    Icons.emoji_food_beverage_rounded,
-    size: 50,
-    color: Color(kMyPurple),
-  )
+  // Icon(
+  //   Icons.spa_outlined,
+  //   size: 50,
+  //   // color: Color(kMyPurple),
+  //   color: isClicked[1] ? Color(0xFF50B964) : Color(kMyPurple),
+  // ),
+  // Icon(
+  //   Icons.sports_gymnastics_rounded,
+  //   size: 50,
+  //   // color: Color(kMyPurple),
+  //   color: isClicked[2] ? Color(0xFF50B964) : Color(kMyPurple),
+  // ),
+  // Icon(
+  //   Icons.emoji_food_beverage_rounded,
+  //   size: 50,
+  //   // color: Color(kMyPurple),
+  //   color: isClicked[3] ? Color(0xFF50B964) : Color(kMyPurple),
+  // )
 ];
 List<String> progressText = [
   "Meditations",
@@ -50,9 +61,14 @@ List<String> progressText = [
 ];
 List<Icon> faceIcons = [Icon(Icons.face_2)];
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -109,6 +125,9 @@ class HomeScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
+                    setState(() {
+                      isClicked[0] = true;
+                    });
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => HRUPage()),
@@ -119,7 +138,9 @@ class HomeScreen extends StatelessWidget {
                     leading: Icon(
                       Icons.sentiment_very_satisfied_rounded,
                       size: 50,
-                      color: Color(kMyPurple),
+                      // color: Color(kMyPurple),
+                      color:
+                          isClicked[0] ? Color(0xFF50B964) : Color(kMyPurple),
                     ),
                     title: Text(
                       'How are you feeling today?',
@@ -158,44 +179,157 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                ListView.builder(
-                  physics: ScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ComingSoonScreen()),
-                            );
-                          },
-                          child: ListTile(
-                            contentPadding: EdgeInsets.symmetric(vertical: 5),
-                            leading: progressIcons[index],
-                            title: Text(
-                              progressText[index],
-                              style: Theme.of(context).textTheme.headlineSmall,
-                            ),
-                            trailing: Icon(
-                              Icons.arrow_forward_ios_rounded,
-                              size: 18,
-                              color: Colors.grey[400],
-                            ),
-                          ),
+                // ListView.builder(
+                //   physics: ScrollPhysics(),
+                //   shrinkWrap: true,
+                //   itemCount: 3,
+                //   itemBuilder: (context, index) {
+                //     return Column(
+                //       children: [
+                //         GestureDetector(
+                //           onTap: () {
+                //             setState(() {
+                //               isClicked[1] = true;
+                //             });
+                //
+                //             Navigator.push(
+                //               context,
+                //               MaterialPageRoute(
+                //                   builder: (context) => ComingSoonScreen()),
+                //             );
+                //           },
+                //           child: ListTile(
+                //             contentPadding: EdgeInsets.symmetric(vertical: 5),
+                //             leading: progressIcons[index],
+                //             title: Text(
+                //               progressText[index],
+                //               style: Theme.of(context).textTheme.headlineSmall,
+                //             ),
+                //             trailing: Icon(
+                //               Icons.arrow_forward_ios_rounded,
+                //               size: 18,
+                //               color: Colors.grey[400],
+                //             ),
+                //           ),
+                //         ),
+                //         Divider(
+                //           color: Colors.black12,
+                //           height: 10,
+                //           thickness: 2 / 3,
+                //           indent: 10,
+                //         ),
+                //       ],
+                //     );
+                //   },
+                // ),
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isClicked[1] = true;
+                        });
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ComingSoonScreen()),
+                        );
+                      },
+                      child: ListTile(
+                        contentPadding: EdgeInsets.symmetric(vertical: 5),
+                        leading: Icon(
+                          Icons.spa_outlined,
+                          size: 50,
+                          // color: Color(kMyPurple),
+                          color: isClicked[1]
+                              ? Color(0xFF50B964)
+                              : Color(kMyPurple),
                         ),
-                        Divider(
-                          color: Colors.black12,
-                          height: 10,
-                          thickness: 2 / 3,
-                          indent: 10,
+                        title: Text(
+                          progressText[0],
+                          style: Theme.of(context).textTheme.headlineSmall,
                         ),
-                      ],
-                    );
-                  },
+                        trailing: Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: 18,
+                          color: Colors.grey[400],
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isClicked[2] = true;
+                        });
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ComingSoonScreen()),
+                        );
+                      },
+                      child: ListTile(
+                        contentPadding: EdgeInsets.symmetric(vertical: 5),
+                        leading: Icon(
+                          Icons.sports_gymnastics_rounded,
+                          size: 50,
+                          // color: Color(kMyPurple),
+                          color: isClicked[2]
+                              ? Color(0xFF50B964)
+                              : Color(kMyPurple),
+                        ),
+                        title: Text(
+                          progressText[1],
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: 18,
+                          color: Colors.grey[400],
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isClicked[3] = true;
+                        });
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ComingSoonScreen()),
+                        );
+                      },
+                      child: ListTile(
+                        contentPadding: EdgeInsets.symmetric(vertical: 5),
+                        leading: Icon(
+                          Icons.emoji_food_beverage_rounded,
+                          size: 50,
+                          // color: Color(kMyPurple),
+                          color: isClicked[3]
+                              ? Color(0xFF50B964)
+                              : Color(kMyPurple),
+                        ),
+                        title: Text(
+                          progressText[2],
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: 18,
+                          color: Colors.grey[400],
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.black12,
+                      height: 10,
+                      thickness: 2 / 3,
+                      indent: 10,
+                    ),
+                  ],
                 ),
               ],
             ),

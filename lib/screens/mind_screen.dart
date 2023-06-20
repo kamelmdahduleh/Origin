@@ -71,15 +71,15 @@ class _MindScreenState extends State<MindScreen> {
 
   @override
   void initState() {
-    super.initState();
     youtubeController = YoutubePlayerController(
         initialVideoId: YoutubePlayer.convertUrlToId(
-            'https://www.youtube.com/embed/inpok4MKVLM')!,
+            "https://www.youtube.com/embed/O-6f5wQXSu8")!,
         flags: YoutubePlayerFlags(
           mute: false,
           loop: false,
           autoPlay: false,
         ));
+    super.initState();
   }
 
   @override
@@ -219,21 +219,28 @@ class _MindScreenState extends State<MindScreen> {
                 ),
               ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(left: 20, bottom: 10),
-                  child: Text(
-                    'Recommended For You',
-                    style: Theme.of(context).textTheme.headlineLarge,
+            Container(
+              margin: EdgeInsets.only(top: 15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(
+                      left: 20,
+                      bottom: 10,
+                      top: 15,
+                    ),
+                    child: Text(
+                      'Recommended For You',
+                      style: Theme.of(context).textTheme.headlineLarge,
+                    ),
                   ),
-                ),
-                YoutubePlayer(
-                  controller: youtubeController,
-                  showVideoProgressIndicator: true,
-                )
-              ],
+                  YoutubePlayer(
+                    controller: youtubeController,
+                    showVideoProgressIndicator: true,
+                  )
+                ],
+              ),
             ),
           ],
         ),
