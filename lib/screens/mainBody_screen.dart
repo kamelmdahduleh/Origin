@@ -116,9 +116,14 @@ class BodyScreenState extends State<BodyScreen> {
   }
 }
 
-class SideMenu extends StatelessWidget {
+class SideMenu extends StatefulWidget {
   const SideMenu({super.key});
 
+  @override
+  State<SideMenu> createState() => _SideMenuState();
+}
+
+class _SideMenuState extends State<SideMenu> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -220,6 +225,13 @@ class SideMenu extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
+                  setState(() {
+                    isClicked[0] = false;
+                    isClicked[1] = false;
+                    isClicked[2] = false;
+                    isClicked[3] = false;
+                    chosen = [false, false, false, false, false];
+                  });
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => LoginScreen()),

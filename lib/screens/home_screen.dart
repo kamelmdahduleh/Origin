@@ -34,6 +34,7 @@ List<Color> moodsColor = [
   Colors.deepPurple
 ];
 List<String> days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+List<bool> chosen = [false, false, false, false, false];
 List<Icon> progressIcons = [
   // Icon(
   //   Icons.spa_outlined,
@@ -340,9 +341,14 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class HRUPage extends StatelessWidget {
+class HRUPage extends StatefulWidget {
   const HRUPage({super.key});
 
+  @override
+  State<HRUPage> createState() => _HRUPageState();
+}
+
+class _HRUPageState extends State<HRUPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -370,11 +376,50 @@ class HRUPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          chosen = [false, false, false, false, false];
+                          chosen[index] = true;
+                        });
+                      },
+                      child: Container(
                         margin: EdgeInsets.symmetric(horizontal: 5),
                         width: 70,
                         height: 70,
-                        child: Image.asset(moodsPath[index])),
+                        child: chosen[index] == false
+                            ? ColorFiltered(
+                                colorFilter: ColorFilter.matrix(<double>[
+                                  0.2126,
+                                  0.7152,
+                                  0.0722,
+                                  0,
+                                  0,
+                                  0.2126,
+                                  0.7152,
+                                  0.0722,
+                                  0,
+                                  0,
+                                  0.2126,
+                                  0.7152,
+                                  0.0722,
+                                  0,
+                                  0,
+                                  0,
+                                  0,
+                                  0,
+                                  1,
+                                  0,
+                                ]),
+                                child: Image.asset(
+                                  moodsPath[index],
+                                ),
+                              )
+                            : Image.asset(
+                                moodsPath[index],
+                              ),
+                      ),
+                    ),
                     // Icon(
                     //   Icons.tag_faces_rounded,
                     //   size: 80,
