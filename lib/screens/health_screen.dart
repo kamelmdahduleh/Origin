@@ -12,6 +12,8 @@ import 'package:smpa_e_health/constants.dart';
 import 'package:smpa_e_health/main.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+bool isVisible = false;
+
 int visit = 0;
 const List<TabItem> items = [
   TabItem(
@@ -140,8 +142,12 @@ class HealthScreenState extends State<HealthScreen> {
                           alignment: Alignment.centerLeft,
                           child: Container(
                             margin: EdgeInsets.only(left: 5),
-                            child: Text('Device Connected',
-                                style: Theme.of(context).textTheme.labelLarge),
+                            child: Visibility(
+                              visible: isVisible,
+                              child: Text('Connecting...',
+                                  style:
+                                      Theme.of(context).textTheme.labelLarge),
+                            ),
                           )),
                       SizedBox(
                         height: 10,
@@ -162,12 +168,19 @@ class HealthScreenState extends State<HealthScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              'Apple Watch',
-                              style: TextStyle(
-                                fontSize: 17,
-                                color: Colors.black87,
+                            GestureDetector(
+                              child: Text(
+                                'Apple Watch',
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.black87,
+                                ),
                               ),
+                              onTap: () {
+                                setState(() {
+                                  isVisible = true;
+                                });
+                              },
                             ),
                             Transform.rotate(
                               angle: 180 * math.pi / 120,
