@@ -11,6 +11,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:smpa_e_health/constants.dart';
 import 'package:smpa_e_health/main.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 bool isVisible = false;
 
@@ -343,6 +344,12 @@ class ChartData {
   final dynamic y;
 }
 
+class ChartSampleData {
+  String x;
+  double y;
+  ChartSampleData({required this.x, required this.y});
+}
+
 class SleepPage extends StatefulWidget {
   const SleepPage({super.key});
 
@@ -353,14 +360,13 @@ class SleepPage extends StatefulWidget {
 class _SleepPageState extends State<SleepPage> {
   @override
   Widget build(BuildContext context) {
-    final List<ChartData> chartData = [
-      ChartData('Tue', 0),
-      ChartData('Wed', 84),
-      ChartData('Thu', 84),
-      ChartData('Fri', 82),
-      ChartData('Sat', 86),
-      ChartData('Sun', 79),
-      ChartData('Mon', 78)
+    List<ChartSampleData> chartData = <ChartSampleData>[
+      ChartSampleData(x: '1', y: 1700),
+      ChartSampleData(x: '2', y: 1650),
+      ChartSampleData(x: '3', y: 1710),
+      ChartSampleData(x: '4', y: 1670),
+      ChartSampleData(x: '5', y: 1500),
+      ChartSampleData(x: '6', y: 1510),
     ];
 
     return Scaffold(
@@ -398,71 +404,46 @@ class _SleepPageState extends State<SleepPage> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: 10,
-            vertical: 40,
-          ),
-          decoration: BoxDecoration(
-              // gradient: LinearGradient(
-              //   colors: [
-              //     Color.fromRGBO(31, 25, 67, 1),
-              //     Color.fromRGBO(46, 51, 96, 0.93),
-              //   ],
-              // ),
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 10,
+                vertical: 40,
               ),
-          child: AspectRatio(
-            aspectRatio: 3 / 2,
-            //
-
-            // ----------------------
-            child: BarChart(
-              BarChartData(
-                maxY: 100,
-                baselineY: 0,
-                barGroups: [
-                  BarChartGroupData(barsSpace: 50, x: 1, barRods: [
-                    BarChartRodData(
-                      toY: 90,
-                      borderRadius: BorderRadius.circular(0),
-                    ),
-                    BarChartRodData(
-                      toY: 64,
-                      borderRadius: BorderRadius.circular(0),
-                    ),
-                    BarChartRodData(
-                      toY: 83,
-                      borderRadius: BorderRadius.circular(0),
-                    ),
-                    BarChartRodData(
-                      toY: 54,
-                      borderRadius: BorderRadius.circular(0),
-                    ),
-                  ])
+              child: SfCartesianChart(
+                title: ChartTitle(
+                  text: 'Cal in vs. Out',
+                  textStyle: TextStyle(color: Colors.white),
+                ),
+                backgroundColor: Color(kMyPurple),
+                primaryXAxis: CategoryAxis(
+                  isVisible: false,
+                ),
+                series: <CartesianSeries>[
+                  ColumnSeries<ChartSampleData, String>(
+                    color: Colors.white24,
+                    width: 0.3,
+                    dataSource: chartData,
+                    xValueMapper: (ChartSampleData data, _) => data.x,
+                    yValueMapper: (ChartSampleData data, _) => data.y,
+                  ),
                 ],
+                primaryYAxis: NumericAxis(
+                  axisLine: AxisLine(color: Color(kMyPurple)),
+                  labelStyle: TextStyle(color: Colors.white),
+                  interval: 750,
+                  maximum: 2250,
+                ),
               ),
             ),
-            // --------------
-            // child: SfCartesianChart(
-            //   primaryXAxis: CategoryAxis(
-            //     axisLine: AxisLine(color: Colors.red),
-            //   ),
-            //   series: <CartesianSeries>[
-            //     ColumnSeries<ChartData, String>(
-            //       color: Colors.white54,
-            //       dataSource: chartData,
-            //       xValueMapper: (ChartData data, _) => data.x,
-            //       yValueMapper: (ChartData data, _) => data.y,
-            //     ),
-            //   ],
-            //   primaryYAxis: LogarithmicAxis(
-            //     minimum: 0,
-            //     interval: 1,
-            //     maximum: 100,
-            //     axisLine: AxisLine(color: Color.fromRGBO(165, 52, 44, 1)),
-            //   ),
-            // ),
-          ),
+            SfSparkBarChart(
+              // data: [chartData],
+              negativePointColor: Colors.blue,
+              axisLineColor: Colors.orange,
+              highPointColor: Colors.pink,
+            )
+          ],
         ),
       ),
     );

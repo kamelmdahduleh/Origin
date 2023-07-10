@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:smpa_e_health/constants.dart';
 import 'package:smpa_e_health/main.dart';
 
@@ -55,12 +56,16 @@ List<Icon> progressIcons = [
   //   color: isClicked[3] ? Color(0xFF50B964) : Color(kMyPurple),
   // )
 ];
+
 List<String> progressText = [
   "Meditations",
   "Exercise",
   "Diet",
 ];
 List<Icon> faceIcons = [Icon(Icons.face_2)];
+
+// Date
+String dateString = DateFormat("EEEEE, dd, MMMM").format(DateTime.now());
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -118,7 +123,8 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Friday, 18 February',
+                  // 'Friday, 18 February',
+                  dateString,
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 SizedBox(
