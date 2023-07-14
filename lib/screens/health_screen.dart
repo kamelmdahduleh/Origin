@@ -437,11 +437,17 @@ class _SleepPageState extends State<SleepPage> {
                 ),
               ),
             ),
-            SfSparkBarChart(
-              // data: [chartData],
-              negativePointColor: Colors.blue,
-              axisLineColor: Colors.orange,
-              highPointColor: Colors.pink,
+            Transform.flip(
+              flipY: true,
+              child: Container(
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(
+                  horizontal: 25,
+                ),
+                child: SfSparkWinLossChart(
+                  data: <double>[12, 15, -10, 13, 15, 6, -12, 17, 13, 8, -10],
+                ),
+              ),
             )
           ],
         ),
